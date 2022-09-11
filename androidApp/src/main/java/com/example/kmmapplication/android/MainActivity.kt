@@ -1,20 +1,40 @@
 package com.example.kmmapplication.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.kmmapplication.Greeting
-import android.widget.TextView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
+import com.example.kmmapplication.CommonViewModel
 
-fun greet(): String {
-    return Greeting().greeting()
-}
+class MainActivity : ComponentActivity() {
 
-class MainActivity : AppCompatActivity() {
+    private lateinit var viewModel: CommonViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        viewModel = ViewModelProvider(this)[CommonViewModel::class.java]
 
-        val tv: TextView = findViewById(R.id.text_view)
-        tv.text = greet()
+        setContent {
+            val movies by viewModel.popularMovies.collectAsState()
+
+            with(movies) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = this@with?.results?.get(0)?.overview.toString(),
+                        fontSize = 18.sp
+                    )
+                }
+            }
+        }
     }
 }

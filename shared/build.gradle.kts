@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
+    kotlin("plugin.serialization")
     id("com.android.library")
 }
 
@@ -21,20 +22,39 @@ kotlin {
             baseName = "shared"
         }
     }
-    
+
     sourceSets {
-        val commonMain by getting
-        val commonTest by getting {
+        val commonMain by getting {
             dependencies {
                 implementation(kotlin("test"))
+                implementation(Libraries.Shared.Common.ktorCore)
+                implementation(Libraries.Shared.Common.ktorJson)
+                implementation(Libraries.Shared.Common.ktorLogging)
+                implementation(Libraries.Shared.Common.logback)
+                implementation(Libraries.Shared.Common.ktorSerialization)
+                implementation(Libraries.Shared.Common.ktorContentNegotiation)
+                implementation(Libraries.Shared.Common.ktorSerializationJson)
+                implementation(Libraries.coroutinesCore)
+                implementation(Libraries.Shared.Common.kotlinSerializationCore)
             }
         }
-        val androidMain by getting
+        val commonTest by getting
+        val androidMain by getting {
+            dependsOn(commonMain)
+            dependencies {
+                implementation(Libraries.Shared.Android.ktorClient)
+                implementation(Libraries.Shared.Android.coroutinesAndroid)
+                implementation(Libraries.viewModelLifeCycle)
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
+            dependencies {
+                implementation(Libraries.Shared.IOS.ktorClient)
+            }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
@@ -56,7 +76,7 @@ android {
     compileSdk = 32
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = 24
+        minSdk = 25
         targetSdk = 32
     }
 }
