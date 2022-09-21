@@ -18,31 +18,31 @@ data class MovieResult(
 @Serializable
 data class MovieItem(
     @SerialName("id")
-    val id:Long?,
+    val id: Long?,
     @SerialName("poster_path")
     val posterPath: String?,
     @SerialName("adult")
-    val adult:Boolean?,
+    val adult: Boolean?,
     @SerialName("overview")
-    val overview:String,
+    val overview: String?,
     @SerialName("release_date")
-    val releaseDate:String,
+    val releaseDate: String?,
     @SerialName("genre_ids")
-    val genreIds:MutableList<Long>?,
+    val genreIds: MutableList<Long>?,
     @SerialName("original_title")
-    val originalTitle:String?,
+    val originalTitle: String?,
     @SerialName("original_language")
-    val originalLanguage:String?,
+    val originalLanguage: String?,
     @SerialName("title")
-    val title:String?,
+    val title: String?,
     @SerialName("backdrop_path")
-    val backdropPath:String?,
+    val backdropPath: String?,
     @SerialName("popularity")
-    val popularity:Double?,
+    val popularity: Double?,
     @SerialName("vote_count")
-    val voteCount:Long?,
+    val voteCount: Long?,
     @SerialName("video")
-    val video:Boolean?,
+    val video: Boolean?,
     @SerialName("vote_average")
-    val voteAverage:Double?
+    val voteAverage: Double?
 )
