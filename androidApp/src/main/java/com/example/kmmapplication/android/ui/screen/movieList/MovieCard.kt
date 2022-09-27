@@ -1,4 +1,4 @@
-package com.example.kmmapplication.android.ui.screen
+package com.example.kmmapplication.android.ui.screen.movieList
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -18,6 +18,8 @@ import com.example.kmmapplication.android.ui.theme.Beige
 import com.example.kmmapplication.android.ui.theme.toDate
 import com.example.kmmapplication.data.model.MovieItem
 
+const val IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face"
+
 @Composable
 fun MovieCard(item: MovieItem) {
     Card(
@@ -25,7 +27,7 @@ fun MovieCard(item: MovieItem) {
             .fillMaxWidth()
             .height(430.dp)
             .padding(5.dp)
-            .clickable { Log.d("asd","${item.title}") },
+            .clickable { Log.d("asd","${item.id}") },
         shape = RoundedCornerShape(
             topStart = 5.dp,
             topEnd = 5.dp,
@@ -45,8 +47,8 @@ fun MovieCard(item: MovieItem) {
                     .height(330.dp)
                     .background(Color.Black)
             ) {
-                val poster = "https://www.themoviedb.org/t/p/w220_and_h330_face"
-                val painter = rememberAsyncImagePainter(model = poster + item.posterPath)
+                val poster = IMAGE_BASE_URL + item.posterPath
+                val painter = rememberAsyncImagePainter(model = poster)
                 Image(
                     modifier = Modifier.fillMaxWidth().height(330.dp),
                     painter = painter,
