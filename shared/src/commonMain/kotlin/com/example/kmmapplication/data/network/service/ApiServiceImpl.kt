@@ -1,6 +1,6 @@
 package com.example.kmmapplication.data.network.service
 
-import com.example.kmmapplication.data.model.MovieResult
+import com.example.kmmapplication.data.model.MoviesResult
 import com.example.kmmapplication.data.network.NetworkModule
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -12,7 +12,7 @@ class ApiServiceImpl constructor(
     private val client: HttpClient
 ): ApiService {
 
-    override suspend fun getPopularMovies(): MovieResult {
+    override suspend fun getPopularMovies(): MoviesResult {
         return client.get(NetworkModule.BASE_URL) {
             url {
                 path("3/movie/popular")
