@@ -21,13 +21,15 @@ import com.example.kmmapplication.data.model.MovieItem
 const val IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face"
 
 @Composable
-fun MovieCard(item: MovieItem) {
+fun MovieCard(item: MovieItem, onClick: (itemId: Long) -> Unit ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(430.dp)
             .padding(5.dp)
-            .clickable { Log.d("asd","${item.id}") },
+            .clickable {
+                Log.d("asd","${item.id}")
+                onClick.invoke(item.id ?: -1) },
         shape = RoundedCornerShape(
             topStart = 5.dp,
             topEnd = 5.dp,

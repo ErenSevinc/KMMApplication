@@ -4,12 +4,13 @@ object Versions {
     const val ktor = "2.1.0"
     const val coroutines = "1.6.4"
     const val kotlinxSerializationCore = "1.3.3"
-    const val lifecycle = "2.4.1"
+    const val lifecycle = "2.5.1"
     const val compose = "1.1.1"
     const val material = "1.2.1"
     const val composeActivity = "1.4.0"
     const val logback = "1.2.11"
     const val coil = "2.2.1"
+    const val navigation = "2.5.2"
 }
 
 object Libraries {
@@ -44,6 +45,7 @@ object Libraries {
 
     object AndroidApp {
         const val liveData = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+        const val composeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.lifecycle}"
         const val ktorCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
         const val composeUI = "androidx.compose.ui:ui:${Versions.compose}"
         const val composeUITooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
@@ -51,6 +53,7 @@ object Libraries {
         const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.compose}"
         const val composeActivity = "androidx.activity:activity-compose:${Versions.composeActivity}"
         const val composeCoil = "io.coil-kt:coil-compose:${Versions.coil}"
+        const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navigation}"
 
     }
 

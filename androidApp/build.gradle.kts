@@ -39,4 +39,6 @@ dependencies {
     implementation(Libraries.AndroidApp.composeFoundation)
     implementation(Libraries.AndroidApp.composeActivity)
     implementation(Libraries.AndroidApp.composeCoil)
+    implementation(Libraries.AndroidApp.composeViewModel)
+    implementation(Libraries.AndroidApp.composeNavigation)
 }

@@ -1,6 +1,7 @@
 package com.example.kmmapplication.data.network.repositories
 
 import com.example.kmmapplication.base.BaseRepository
+import com.example.kmmapplication.data.model.MovieDetailResult
 import com.example.kmmapplication.data.model.MoviesResult
 import com.example.kmmapplication.data.network.NetworkModule
 import com.example.kmmapplication.data.network.service.ApiServiceImpl
@@ -14,6 +15,12 @@ class DataRepository constructor(
     fun getPopularMovies(): Flow<MoviesResult> {
         return fetch {
             service.getPopularMovies()
+        }
+    }
+
+    fun getMovieDetail(movieId: Long): Flow<MovieDetailResult> {
+        return fetch {
+            service.getMovieDetail(movieId)
         }
     }
 }
