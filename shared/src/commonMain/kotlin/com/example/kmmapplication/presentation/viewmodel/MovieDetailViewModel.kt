@@ -14,11 +14,15 @@ class MovieDetailViewModel constructor(
     private val _movieDetail = MutableStateFlow<MovieDetailResult?>(null)
     val movieDetail: StateFlow<MovieDetailResult?> = _movieDetail
 
+    private val _isSuccess = MutableStateFlow<Boolean>(false)
+    val isSuccess: StateFlow<Boolean> = _isSuccess
+
     fun getMovieDetail(movieId: Long) {
         baseScope.launch {
             getMovieDetailUseCase.invoke(movieId)
                 .collect {
                     _movieDetail.value = it
+                    _isSuccess.value = true
                 }
         }
     }
