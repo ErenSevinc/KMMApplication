@@ -14,6 +14,10 @@ class MoviesPageViewModel constructor(
     private val _popularMovies = MutableStateFlow<MoviesResult?>(null)
     val popularMovies: StateFlow<MoviesResult?> = _popularMovies
 
+    init {
+        getPopularMovies()
+    }
+
     fun getPopularMovies() {
         baseScope.launch {
             getPopularMoviesUseCase.invoke(Unit)

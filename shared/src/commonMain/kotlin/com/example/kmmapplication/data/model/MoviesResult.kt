@@ -6,13 +6,13 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MoviesResult(
     @SerialName("page")
-    val page: Long?,
+    val page: Long? = null,
     @SerialName("total_results")
-    val totalResults: Long?,
+    val totalResults: Long? = null,
     @SerialName("total_pages")
-    val totalPages: Long?,
+    val totalPages: Long? = null,
     @SerialName("results")
-    val results: MutableList<MovieItem>?
+    val results: MutableList<MovieItem>? = emptyList<MovieItem>().toMutableList()
 )
 
 @Serializable

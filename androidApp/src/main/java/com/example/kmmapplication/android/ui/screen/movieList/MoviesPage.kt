@@ -21,11 +21,11 @@ fun MoviesPage(navController: NavController) {
     val viewModel: MoviesPageViewModel = viewModel()
     val movies by viewModel.popularMovies.collectAsState()
 
-    LaunchedEffect(movies) {
-        if (movies == null) {
-            viewModel.getPopularMovies()
-        }
-    }
+//    LaunchedEffect(movies) {
+//        if (movies == null) {
+//            viewModel.getPopularMovies()
+//        }
+//    }
 
     with(movies) {
         Column(modifier = Modifier.fillMaxSize(),
