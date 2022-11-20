@@ -2,8 +2,8 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    let greeting = Greeting()
-    @State var greet: String = "Eren"
+    //let greeting = Greeting()
+    //@State var greet: String = "Eren"
     //MoviesResult?
     //= MoviesResult(
     //page: nil,
@@ -12,6 +12,7 @@ struct ContentView: View {
     //results: NSMutableArray()
     //)
     
+    /*
     func load() {
         
         greeting.getPopularMovies { result, error in
@@ -31,20 +32,19 @@ struct ContentView: View {
             }
         }
     }
+     */
+
+    /*
+    let impl = ApiServiceImpl()
+    let dataRepo = DataRepository(service: impl)
+    let useCase = GetPopularMoviesUseCase(repository: dataRepo)
+    let vModel = MoviesPageViewModel(getPopularMoviesUseCase: useCase)
+*/
+
     
     var body: some View {
         
-        /*
-         List{
-         ForEach(greet) { item  in }
-         }
-         
-         */
-        Text(greet)
-            .onAppear() {
-                load()
-                
-            }
+        Text("Eren")
     }
 }
 

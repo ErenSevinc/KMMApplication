@@ -21,16 +21,18 @@ fun MoviesPage(navController: NavController) {
     val viewModel: MoviesPageViewModel = viewModel()
     val movies by viewModel.popularMovies.collectAsState()
 
-//    LaunchedEffect(movies) {
-//        if (movies == null) {
-//            viewModel.getPopularMovies()
-//        }
-//    }
+    LaunchedEffect(movies) {
+        if (movies == null) {
+            viewModel.getPopularMovies()
+        }
+    }
 
     with(movies) {
-        Column(modifier = Modifier.fillMaxSize(),
+        Column(
+            modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 //            if (1 == 1) {
 //                CircularProgressIndicator(
 //                    modifier = Modifier.size(50.dp, 50.dp),
@@ -49,4 +51,5 @@ fun MoviesPage(navController: NavController) {
         }
     }
 }
+
 
