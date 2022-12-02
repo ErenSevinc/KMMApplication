@@ -52,9 +52,6 @@ struct MovieCard: View {
             VStack {
                 Text("Film")
                 Text("\(item.title ?? "Boş")").font(.system(size:12)).multilineTextAlignment(.center)
-                Text("Tarih")
-                Text("\(item.releaseDate ?? "Boş")").font(.system(size:12))
-                    .multilineTextAlignment(.center)
             }
             Spacer(minLength: 10)
         }.background(Color(UIColor(named: "Begie")!)).cornerRadius(20)

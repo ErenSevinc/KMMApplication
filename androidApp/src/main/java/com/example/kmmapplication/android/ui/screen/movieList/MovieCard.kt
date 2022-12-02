@@ -27,7 +27,7 @@ fun MovieCard(item: MovieItem, onClick: (itemId: Long) -> Unit ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(430.dp)
+            .height(380.dp)
             .padding(5.dp)
             .clickable {
                 Log.d("asd","${item.id}")
@@ -60,20 +60,10 @@ fun MovieCard(item: MovieItem, onClick: (itemId: Long) -> Unit ) {
             }
             Text(
                 modifier = Modifier.padding(),
-                text = "Movie" ?: ""
+                text = "Film" ?: ""
             )
             Text(
-                modifier = Modifier.padding(),
                 text = item.title ?: "",
-                fontSize = 12.sp
-            )
-            Text(
-                modifier = Modifier.padding(),
-                text = "Release Date" ?: ""
-            )
-            Text(
-                modifier = Modifier.padding(),
-                text = item.releaseDate?.toDate() ?: "",
                 fontSize = 12.sp
             )
         }
