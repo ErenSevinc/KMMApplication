@@ -14,17 +14,6 @@ class DataRepository constructor(
     private val service: ApiService
 ) : BaseRepository() {
 
-//    fun getPopularMovies(): Flow<MoviesResult> {
-//        return fetch {
-//            service.getPopularMovies()
-//        }
-//    }
-//    fun getMovieDetail(movieId: Long): Flow<MovieDetailResult> {
-//        return fetch {
-//            service.getMovieDetail(movieId)
-//        }
-//    }
-
     suspend fun getPopularMovies() = service.getPopularMovies()
     suspend fun getMovieDetail(movieId: Long) = service.getMovieDetail(movieId)
 

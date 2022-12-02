@@ -11,14 +11,16 @@ import shared
 
 class MovieDetailViewModel : ObservableObject {
     private let detailUseCase: GetMovieDetailUseCase = koin.getMovieDetailUseCase()
-        
+            
     @Published var movieDetailResult: MovieDetailResult = MovieDetailResult(adult: nil, backdropPath: nil, belongsToCollection: nil, budget: nil, genres: nil, homepage: nil, id: nil, imdbId: nil, originalLanguage: nil, originalTitle: nil, overview: nil, popularity: nil, posterPath: nil, productionCompanies: nil, productionCountries: nil, releaseDate: nil, revenue: nil, runtime: nil, spokenLanguages: nil, status: nil, tagline: nil, title: nil, video: nil, voteAverage: nil, voteCount: nil)
     @Published var genres: String = ""
     @Published var companies: String = ""
+    @Published var isSuccess: IsSuccess = .loading
     
     func load(movieId: Int64) {
         detailUseCase.getMovieDetail(movieId: movieId) { result, error in
             if let result = result {
+                self.isSuccess = .success
                 self.movieDetailResult = result
                 result.genres?.forEach { genre in
                     self.genres += "\((genre as? Genres?)??.name ?? "genre"), "
@@ -28,14 +30,7 @@ class MovieDetailViewModel : ObservableObject {
                 }
             }
             else {
-                /*
-                self.movieResult = MoviesResult(
-                    page: nil,
-                    totalResults: nil,
-                    totalPages: nil,
-                    results: NSMutableArray()
-                )
-                 */
+                self.isSuccess = .fail
             }
         }
     }

@@ -15,15 +15,18 @@ struct MovieDetailView: View {
     
     var body: some View {
         VStack {
-            /*
-             Text("movie: \(self.viewModel.movieDetailResult.title ?? "Boş")").onAppear() {
-             viewModel.load(movieId: movieId!)
-             */
-            DetailView(item: self.viewModel.movieDetailResult,genres: self.viewModel.genres, companies: self.viewModel.companies).onAppear() {
+            switch viewModel.isSuccess {
+            case .loading:
+                ProgressView()
+            case .fail:
+                Text("Error !!!")
+            case .success:
+                DetailView(item: self.viewModel.movieDetailResult,genres: self.viewModel.genres, companies: self.viewModel.companies)
+            }
+        }.navigationBarTitle("Film Detay", displayMode: .inline)
+            .onAppear() {
                 viewModel.load(movieId: movieId!)
             }
-            
-        }.navigationBarTitle("Film Detay", displayMode: .inline)
     }
 }
 

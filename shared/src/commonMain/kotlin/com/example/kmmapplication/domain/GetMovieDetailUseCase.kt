@@ -9,11 +9,6 @@ import kotlinx.coroutines.flow.Flow
 class GetMovieDetailUseCase constructor(
     private val repository: DataRepository
 ) {
-    //: BaseUseCase<Long, MovieDetailResult>() {
-
-//    override fun buildUseCase(params: Long): Flow<MovieDetailResult> {
-//        return repository.getMovieDetail(params)
-//    }
     suspend fun getMovieDetail(movieId: Long): MovieDetailResult {
         return repository.getMovieDetail(movieId)
     }

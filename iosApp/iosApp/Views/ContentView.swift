@@ -13,14 +13,21 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: layout, spacing: 5) {
-                    ForEach(viewModel.movieItemList, id: \.self) { item in
-                        NavigationLink(destination: MovieDetailView(movieId: item.id as? Int64)){
-                        MovieCard(item: item)
+            switch viewModel.isSuccess {
+            case .loading:
+                ProgressView()
+            case .fail:
+                Text("Error !!!")
+            case .success:
+                ScrollView {
+                    LazyVGrid(columns: layout, spacing: 5) {
+                        ForEach(viewModel.movieItemList, id: \.self) { item in
+                            NavigationLink(destination: MovieDetailView(movieId: item.id as? Int64)){
+                            MovieCard(item: item)
+                            }
+                            .navigationBarTitle("Popüler Filmler", displayMode: .inline)
+                            .buttonStyle(.plain)
                         }
-                        .navigationBarTitle("Popüler Filmler", displayMode: .inline)
-                        .buttonStyle(.plain)
                     }
                 }
             }
