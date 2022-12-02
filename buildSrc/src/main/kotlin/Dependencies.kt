@@ -1,3 +1,5 @@
+import Versions.koinVersion
+
 object Versions {
     const val kotlin = "1.7.10"
     const val gradle = "7.2.2"
@@ -11,6 +13,7 @@ object Versions {
     const val logback = "1.2.11"
     const val coil = "2.2.1"
     const val navigation = "2.5.2"
+    const val koinVersion = "3.2.0"
 }
 
 object Libraries {
@@ -31,6 +34,7 @@ object Libraries {
             const val ktorSerializationJson = "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
             const val ktorContentNegotiation = "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
             const val kotlinSerializationCore = "org.jetbrains.kotlinx:kotlinx-serialization-core:${Versions.kotlinxSerializationCore}"
+            const val koin = "io.insert-koin:koin-core:${koinVersion}"
         }
 
         object Android {
@@ -54,6 +58,8 @@ object Libraries {
         const val composeActivity = "androidx.activity:activity-compose:${Versions.composeActivity}"
         const val composeCoil = "io.coil-kt:coil-compose:${Versions.coil}"
         const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navigation}"
+        const val koinAndroid = "io.insert-koin:koin-android:$koinVersion"
+        const val koinAndroidX = "io.insert-koin:koin-androidx-compose:$koinVersion"
 
     }
 

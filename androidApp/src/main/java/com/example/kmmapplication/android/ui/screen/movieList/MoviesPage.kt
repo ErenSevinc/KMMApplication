@@ -13,12 +13,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kmmapplication.data.model.MovieItem
 import com.example.kmmapplication.presentation.viewmodel.MoviesPageViewModel
+import org.koin.androidx.compose.getViewModel
+
 
 
 @Composable
 fun MoviesPage(navController: NavController) {
 
-    val viewModel: MoviesPageViewModel = viewModel()
+    val viewModel = getViewModel<MoviesPageViewModel>()
     val movies by viewModel.popularMovies.collectAsState()
 
     LaunchedEffect(movies) {

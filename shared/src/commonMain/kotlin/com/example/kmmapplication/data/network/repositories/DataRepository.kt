@@ -4,23 +4,28 @@ import com.example.kmmapplication.base.BaseRepository
 import com.example.kmmapplication.data.model.MovieDetailResult
 import com.example.kmmapplication.data.model.MoviesResult
 import com.example.kmmapplication.data.network.NetworkModule
+import com.example.kmmapplication.data.network.getClient
+import com.example.kmmapplication.data.network.service.ApiService
 import com.example.kmmapplication.data.network.service.ApiServiceImpl
 import io.ktor.client.statement.*
 import kotlinx.coroutines.flow.Flow
 
 class DataRepository constructor(
-    private val service: ApiServiceImpl = ApiServiceImpl(NetworkModule.getClient())
+    private val service: ApiService
 ) : BaseRepository() {
 
-    fun getPopularMovies(): Flow<MoviesResult> {
-        return fetch {
-            service.getPopularMovies()
-        }
-    }
+//    fun getPopularMovies(): Flow<MoviesResult> {
+//        return fetch {
+//            service.getPopularMovies()
+//        }
+//    }
+//    fun getMovieDetail(movieId: Long): Flow<MovieDetailResult> {
+//        return fetch {
+//            service.getMovieDetail(movieId)
+//        }
+//    }
 
-    fun getMovieDetail(movieId: Long): Flow<MovieDetailResult> {
-        return fetch {
-            service.getMovieDetail(movieId)
-        }
-    }
+    suspend fun getPopularMovies() = service.getPopularMovies()
+    suspend fun getMovieDetail(movieId: Long) = service.getMovieDetail(movieId)
+
 }

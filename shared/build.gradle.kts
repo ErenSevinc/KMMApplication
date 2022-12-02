@@ -36,6 +36,7 @@ kotlin {
                 implementation(Libraries.Shared.Common.ktorSerializationJson)
                 implementation(Libraries.coroutinesCore)
                 implementation(Libraries.Shared.Common.kotlinSerializationCore)
+                implementation(Libraries.Shared.Common.koin)
             }
         }
         val commonTest by getting

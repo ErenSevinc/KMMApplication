@@ -30,7 +30,9 @@ dependencies {
     implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.0")
-
+    
+    implementation(Libraries.AndroidApp.koinAndroid)
+    implementation(Libraries.AndroidApp.koinAndroidX)
     implementation(Libraries.coroutinesCore)
     implementation(Libraries.AndroidApp.ktorCoroutinesAndroid)
     implementation(Libraries.AndroidApp.composeUI)

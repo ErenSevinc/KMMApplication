@@ -13,12 +13,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.kmmapplication.android.ui.theme.Beige
 import com.example.kmmapplication.android.ui.theme.toDate
 import com.example.kmmapplication.data.model.MovieItem
 
 const val IMAGE_BASE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face"
+const val IMAGE_POST_BASE = "https://www.themoviedb.org/t/p/w500_and_h282_face/"
 
 @Composable
 fun MovieCard(item: MovieItem, onClick: (itemId: Long) -> Unit ) {
@@ -47,7 +49,6 @@ fun MovieCard(item: MovieItem, onClick: (itemId: Long) -> Unit ) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(330.dp)
-                    .background(Color.Black)
             ) {
                 val poster = IMAGE_BASE_URL + item.posterPath
                 val painter = rememberAsyncImagePainter(model = poster)
@@ -63,7 +64,8 @@ fun MovieCard(item: MovieItem, onClick: (itemId: Long) -> Unit ) {
             )
             Text(
                 modifier = Modifier.padding(),
-                text = item.title ?: ""
+                text = item.title ?: "",
+                fontSize = 12.sp
             )
             Text(
                 modifier = Modifier.padding(),
@@ -71,7 +73,8 @@ fun MovieCard(item: MovieItem, onClick: (itemId: Long) -> Unit ) {
             )
             Text(
                 modifier = Modifier.padding(),
-                text = item.releaseDate?.toDate() ?: ""
+                text = item.releaseDate?.toDate() ?: "",
+                fontSize = 12.sp
             )
         }
     }

@@ -8,10 +8,11 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import org.koin.core.component.KoinComponent
 
 class ApiServiceImpl constructor(
     private val client: HttpClient
-) : ApiService {
+) : KoinComponent, ApiService {
 
     override suspend fun getPopularMovies(): MoviesResult {
         return client.get(NetworkModule.BASE_URL) {

@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModel constructor(
-    private val getMovieDetailUseCase: GetMovieDetailUseCase = GetMovieDetailUseCase()
+    private val getMovieDetailUseCase: GetMovieDetailUseCase
 ) : BaseViewModel() {
 
     private val _movieDetail = MutableStateFlow<MovieDetailResult?>(null)
@@ -17,13 +17,25 @@ class MovieDetailViewModel constructor(
     private val _isSuccess = MutableStateFlow<Boolean>(false)
     val isSuccess: StateFlow<Boolean> = _isSuccess
 
+    init {
+        _movieDetail.value = null
+    }
+
     fun getMovieDetail(movieId: Long) {
         baseScope.launch {
-            getMovieDetailUseCase.invoke(movieId)
-                .collect {
-                    _movieDetail.value = it
-                    _isSuccess.value = true
-                }
+            kotlin.runCatching {
+                getMovieDetailUseCase.getMovieDetail(movieId)
+            }.onSuccess {
+                _movieDetail.value = it
+                _isSuccess.value = true
+            }.onFailure {
+                _isSuccess.value = false
+            }
+//            getMovieDetailUseCase.getMovieDetail(movieId)
+//                .collect {
+//                    _movieDetail.value = it
+//                    _isSuccess.value = true
+//                }
         }
     }
 }
